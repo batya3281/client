@@ -1,0 +1,60 @@
+#login{
+  margin: 10% 37% 10% 37%;
+  border: 1px solid black;
+  text-align: center;
+  height: 50vh;
+  background-color:  rgba(211, 211, 211, 0.534);  
+  border-radius: 5%;
+}
+#details{
+    border: 1px solid black;
+   margin: 2%;
+   height: 25vh;
+   background-color: white;
+   border-radius: 5%;
+}
+#personIcon{
+   border: 1px solid black;
+    width:40%;
+    height: 20vh;
+    border-radius: 20%;
+    background-color: white;
+}
+#icon{
+    width: 10%;
+    height: 5vh;   
+}
+.text{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+#logon{
+    margin: 5% 37% 5% 37%;
+    border: 1px solid black;
+    text-align: center;
+    height: 77vh;
+    background-color: rgba(211, 211, 211, 0.534);  
+    border-radius: 5%;
+}
+#details2{
+    border: 1px solid black;
+    margin: 2%;
+    height: 52vh;
+    background-color: white;
+    border-radius: 5%;
+}
+#loginb{
+    color: red; 
+    background-color: white;
+    height: 3vh;
+}
+
+label#outlined-basic-label {
+    color:black;
+}
+
+/* input#outlined-basic-input {
+    border-bottom-color:black;
+} */
+
