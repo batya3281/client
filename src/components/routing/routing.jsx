@@ -15,7 +15,6 @@ export const Routing = () => {
         <Routes>
             <Route path={'/welcome'} element={<Welcome />} />
             <Route path={'/about'} element={<About />} />
-
             <Route path={'/'} element={<Login />} />
             <Route path={'/login'} element={<Login />} />
             <Route path={'/logon'} element={<Logon />} />
@@ -24,7 +23,6 @@ export const Routing = () => {
                 <Route path={'propertiesForSale'} element={<PropertiesForSale />} />
                 <Route path={'favoriteProperties'} element={<FavoriteProperties />} />
                 <Route path={'search'} element={<Search />} />
-
             </Route>
             {/* <Route path={'/requiredProperties'} element={<RequiredProperties/>}/>  
         <Route path={'/propertiesForSale'} element={<PropertiesForSale/>}/> 
