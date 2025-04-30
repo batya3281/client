@@ -7,7 +7,6 @@ import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
-import EmailIcon from '@mui/icons-material/Email';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PasswordSharpIcon from '@mui/icons-material/PasswordSharp';

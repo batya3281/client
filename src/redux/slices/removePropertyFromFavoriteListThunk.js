@@ -13,6 +13,7 @@ export const removePropertyFromFavoriteListThunk=createAsyncThunk(
             }
         });
         if (res.ok) {
+            debugger
             console.log("fetch success");
             if(res.status===204){
                 return null;

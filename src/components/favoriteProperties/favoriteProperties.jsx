@@ -18,7 +18,7 @@ export const FavoriteProperties = () => {
     }
 
     const unFavorite = async () => {
-        dispatch(removePropertyFromFavoriteListThunk({ customerCode: sessionStorage.getItem("userId"), propertyCode: propertyForSaleId }));
+    if(favoriteProperties.length>0)   await dispatch(removePropertyFromFavoriteListThunk({ customerCode: sessionStorage.getItem("userId"), propertyCode: propertyForSaleId }));
     }
     useEffect(() => {
         dispatch(getFavoritePropertiesThunk(userId));
