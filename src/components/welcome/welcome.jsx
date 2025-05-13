@@ -6948,7 +6948,7 @@ const TestimonialCard = styled(Paper)(({ theme }) => ({
     left: 0,
     width: "100%",
     height: "5px",
-    background: "linear-gradient(90deg, #e53935, #ff9800)",
+    background: "red",
   },
 }));
 
