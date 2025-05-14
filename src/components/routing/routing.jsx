@@ -37,7 +37,7 @@ import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import { Login } from "../login/login";
 import { Logon } from "../logon/logon";
 import { Home } from "../home/home";
-import { RequiredProperties } from "../requiredProperties/requiredProperties";
+
 import { PropertiesForSale } from "../propertiesForSale/propertiesForSale";
 import { FavoriteProperties } from "../favoriteProperties/favoriteProperties";
 import { Search } from "../search/search";
@@ -46,6 +46,8 @@ import { Search } from "../search/search";
 import { Logout } from "@mui/icons-material";
 import Welcome from "../welcome/welcome";
 import About from "../about/about";
+import { RequiredProperties } from "../requiredProperties/requiredProperties";
+
 
 export const Routing = () => {
   return (

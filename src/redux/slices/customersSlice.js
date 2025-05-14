@@ -12,6 +12,7 @@ import { searchPropertiesThunk } from "./searchPropertiesThunk";
 import { removePropertyFromFavoriteListThunk } from "./removePropertyFromFavoriteListThunk";
 import { updateRequiredPropertyThunk } from "./updateRequiredPropertyThunk";
 import { addPropertyFoFavoriteListThunk } from "./addPropertyFoFavoriteListThunk";
+import { updatePropertyForSaleThunk } from "./updatePropertyForSaleThunk";
 
 export const INITIAL_CUSTOMER = {
   user: {},
@@ -216,6 +217,17 @@ export const customersSlice = createSlice({
     });
     //הוספת מקרה שהטנק נכשל
     builder.addCase(updateRequiredPropertyThunk.rejected, (state) => {
+    });
+    //updatePropertyForSaleThunk
+    builder.addCase(updatePropertyForSaleThunk.pending, (state) => {
+    });
+    //הוספת מקרה שהטנק הצליח
+    builder.addCase(updatePropertyForSaleThunk.fulfilled, (state, action) => {
+      if (action.payload != null)
+        state.propertyForSales = action.payload;
+    });
+    //הוספת מקרה שהטנק נכשל
+    builder.addCase(updatePropertyForSaleThunk.rejected, (state) => {
     });
     //addPropertyFoFavoriteListThunk
     builder.addCase(addPropertyFoFavoriteListThunk.pending, (state) => {
