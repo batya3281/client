@@ -426,7 +426,7 @@ const growIn = keyframes`
 `;
 // Styled Components
 const HeroSection = styled(Box)(({ theme }) => ({
-  backgroundColor: '#1a1a1a', // Dark Gray
+  backgroundColor: '#000000', // Dark Gray
   paddingTop: theme.spacing(14),
   paddingBottom: theme.spacing(14),
   [theme.breakpoints.down('md')]: {
