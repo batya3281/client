@@ -579,7 +579,7 @@ export const Home = () => {
                                     >
                                         <MenuItem
                                             component={Link}
-                                            to="/"
+                                            to="/home"
                                             onClick={handleClose}
                                             sx={{
                                                 py: 1.5,
@@ -936,4 +936,3 @@ const WelcomeDashboard = () => {
 };
 
 export default Home;
-

@@ -51,7 +51,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
   minHeight: "85vh",
   display: "flex",
   alignItems: "center",
-  backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('https://source.unsplash.com/random/1920x1080/?luxury,real,estate')",
+  backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('/images/hands.jpg')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   color: "#ffffff",
@@ -179,7 +179,7 @@ const PropertyTypeCard = styled(Card)(({ theme }) => ({
       transform: "scale(1.05)",
     },
     "& .property-type-icon": {
-      backgroundColor: "#e53935",
+      // backgroundColor: "#e53935",
       color: "#ffffff",
     }
   },
@@ -514,7 +514,7 @@ const Welcome = () => {
         </Fade>
       </Grid>
 
-      <Grid item xs={12} md={5}>
+      {/* <Grid item xs={12} md={5}>
         <Zoom in={loaded} timeout={1000}>
           <Box
             sx={{
@@ -543,7 +543,7 @@ const Welcome = () => {
           >
             <Box
               component="img"
-              src="https://source.unsplash.com/random/600x800/?luxury,home,interior"
+              src='/pic/hands.jpg'
               alt="Luxury Home Interior"
               sx={{
                 width: "100%",
@@ -575,7 +575,7 @@ const Welcome = () => {
             </Box>
           </Box>
         </Zoom>
-      </Grid>
+      </Grid> */}
     </Grid>
 
     <Box
@@ -879,25 +879,25 @@ const Welcome = () => {
         {
           title: "Apartments",
           icon: <ApartmentIcon />,
-          image: "https://source.unsplash.com/random/600x400/?apartment",
+          image: "images/kitchen.jpg",
           count: 1245
         },
         {
           title: "Houses",
           icon: <HouseIcon />,
-          image: "https://source.unsplash.com/random/600x400/?house",
+          image: "images/house.jpg",
           count: 873
         },
         {
           title: "Villas",
           icon: <VillaIcon />,
-          image: "https://source.unsplash.com/random/600x400/?villa",
+          image: "images/villa2.jpg",
           count: 342
         },
         {
           title: "Commercial",
           icon: <BusinessIcon />,
-          image: "https://source.unsplash.com/random/600x400/?office",
+          image: "images/office.jpg",
           count: 568
         }
       ].map((item, index) => (
@@ -1079,7 +1079,7 @@ const Welcome = () => {
       <Zoom in={loaded} timeout={1000}>
         <Box
           component="img"
-          src="https://source.unsplash.com/random/600x400/?real,estate,technology"
+          src="images/laptop.jpg"
           alt="Real Estate Platform"
           sx={{
             width: "100%",
@@ -1535,7 +1535,7 @@ opacity: 0.1,
 >
   <Box
     component="img"
-    src="https://source.unsplash.com/random/600x800/?house,key"
+    src="images/p1.jpg"
     alt="Property Keys"
     sx={{
       width: "100%",
