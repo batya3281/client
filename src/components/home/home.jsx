@@ -577,7 +577,7 @@ export const Home = () => {
                                             },
                                         }}
                                     >
-                                        <MenuItem
+                                        {/* <MenuItem
                                             component={Link}
                                             to="/home"
                                             onClick={handleClose}
@@ -592,7 +592,7 @@ export const Home = () => {
                                         >
                                             <HomeIcon fontSize="small" sx={{ mr: 1.5, color: '#212121' }} />
                                             Home
-                                        </MenuItem>
+                                        </MenuItem> */}
                                         <MenuItem
                                             component={Link}
                                             to="/about"
@@ -801,7 +801,7 @@ const WelcomeDashboard = () => {
                                     >
                                         <HomeIcon sx={{ fontSize: 30, color: '#e53935' }} />
                                     </Box>
-                                    <StatNumber variant="h3">24</StatNumber>
+                                    <StatNumber variant="h3">24,376</StatNumber>
                                     <Typography
                                         variant="body2"
                                         sx={{
@@ -837,7 +837,7 @@ const WelcomeDashboard = () => {
                                     >
                                         <SearchIcon sx={{ fontSize: 30, color: '#e53935' }} />
                                     </Box>
-                                    <StatNumber variant="h3">12</StatNumber>
+                                    <StatNumber variant="h3">259</StatNumber>
                                     <Typography
                                         variant="body2"
                                         sx={{
@@ -873,7 +873,7 @@ const WelcomeDashboard = () => {
                                     >
                                         <FavoriteIcon sx={{ fontSize: 30, color: '#e53935' }} />
                                     </Box>
-                                    <StatNumber variant="h3">8</StatNumber>
+                                    <StatNumber variant="h3">16,328</StatNumber>
                                     <Typography
                                         variant="body2"
                                         sx={{

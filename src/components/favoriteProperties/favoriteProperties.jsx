@@ -1715,8 +1715,8 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 // Styled components (unchanged)
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
     borderRadius: '16px',
-    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)', 
-    maxHeight: '380px', // גובה קבוע לטבלה - זה יגרום לגלילה
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
+    maxHeight: '450px', // גובה קבוע לטבלה - זה יגרום לגלילה
     overflow: 'auto', // זה מאפשר גלילה
     transition: 'all 0.3s ease',
     '&:hover': {
@@ -1887,7 +1887,8 @@ export const FavoriteProperties = () => {
                     `${property.propertyArea} m²`,
                     property.propertyCity,
                     property.propertyNeighborhood,
-                    property.propertyPrice.toLocaleString(),
+                    property.propertyPrice.
+                        toLocaleString(),
                     property.sellsemail
                 ];
                 tableRows.push(propertyData);
@@ -2014,32 +2015,33 @@ export const FavoriteProperties = () => {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        mb: 4
+                        mb: 2
                     }}
-                >
-                    <Typography
-                        variant="h5"
-                        component="h1"
-                        sx={{
-                            fontWeight: 700,
-                            position: 'relative',
-                            display: 'inline-block',
-                            '&::after': {
-                                content: '""',
-                                position: 'absolute',
-                                bottom: '-8px',
-                                left: 0,
-                                width: '40px',
-                                height: '4px',
-                                backgroundColor: '#e53935',
-                                borderRadius: '2px',
-                            }
-                        }}
-                    >
-                        <FavoriteIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#e53935' }} />
-                        Your Favorite Properties
-                    </Typography>
-
+                >   <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Typography
+                            variant="h5"
+                            component="h1"
+                            sx={{
+                                fontWeight: 700,
+                                position: 'relative',
+                                display: 'inline-block',
+                                '&::after': {
+                                    content: '""',
+                                    position: 'absolute',
+                                    bottom: '-8px',
+                                    left: 0,
+                                    width: '40px',
+                                    height: '4px',
+                                    backgroundColor: '#e53935',
+                                    borderRadius: '2px',
+                                }
+                            }}
+                        >
+                            <FavoriteIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#e53935' }} />
+                            Your Favorite Properties
+                        </Typography>
+                    </Box>
+                    <Box>
                     <Chip
                         label={`${favoriteProperties?.length || 0} properties`}
                         color="primary"
@@ -2052,28 +2054,31 @@ export const FavoriteProperties = () => {
                                 px: 2
                             }
                         }}
-                    />
+                    />  <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={generatePDF}
+                        startIcon={<PictureAsPdfIcon />} // Add the PDF icon
+                        sx={{
+                            mb: 2,
+                            backgroundColor: '#e53935', // Match the primary color
+                            '&:hover': {
+                                backgroundColor: '#c32f2c', // Darken on hover
+                            },
+                            ml: 2,
+                            mb: "none" // Added margin-left
+                            // Add some spacing around the icon
+                            // '& .MuiButton-startIcon': {
+                            //     marginRight: '8px',
+                            // },
+                        }}
+                    >
+                        Export to PDF
+                    </Button>
+                    </Box>      
                 </Box>
 
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={generatePDF}
-                    startIcon={<PictureAsPdfIcon />} // Add the PDF icon
-                    sx={{
-                        mb: 2,
-                        backgroundColor: '#e53935', // Match the primary color
-                        '&:hover': {
-                            backgroundColor: '#d32f2f', // Darken on hover
-                        },
-                        // Add some spacing around the icon
-                        '& .MuiButton-startIcon': {
-                            marginRight: '8px',
-                        },
-                    }}
-                >
-                    Export to PDF
-                </Button>
+
 
                 {favoriteProperties?.length > 0 ? (
                     <Grow in={true} timeout={800}>
@@ -2140,10 +2145,9 @@ export const FavoriteProperties = () => {
                                             <StyledTableCell>{property.propertyNeighborhood}</StyledTableCell>
                                             <StyledTableCell>
                                                 <Chip
-                                                    label={`${property.propertyPrice.toLocaleString()}`}
+                                                    label={`$${property.propertyPrice.toLocaleString()}`}
                                                     sx={{
                                                         fontWeight: 600,
-
                                                         backgroundColor: 'rgba(0, 0, 0, 0.05)',
                                                         borderRadius: '8px',
                                                     }}

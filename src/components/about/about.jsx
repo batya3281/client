@@ -600,17 +600,6 @@ const About = () => {
                 Your Real Estate Platform
               </Typography>
             </Box>
-            <Stack direction="row" spacing={2}>
-              <Button color="primary" component={Link} to="/" sx={{ color: '#e53935', '&:hover': { backgroundColor: 'rgba(229, 57, 53, 0.1)' } }}>
-                Home
-              </Button>
-              <Button color="primary" component={Link} to="/about" sx={{ color: '#e53935', '&:hover': { backgroundColor: 'rgba(229, 57, 53, 0.1)' } }}>
-                About
-              </Button>
-              <Button color="primary" component={Link} to="/contact" sx={{ color: '#e53935', '&:hover': { backgroundColor: 'rgba(229, 57, 53, 0.1)' } }}>
-                Contact
-              </Button>
-            </Stack>
           </Toolbar>
         </Container>
       </AppBar>

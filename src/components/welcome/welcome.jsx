@@ -2,7 +2,7 @@
 //the origional
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -282,6 +282,7 @@ const Welcome = () => {
   const testimonialControls = useAnimation();
   const faqControls = useAnimation();
   const propertyTypeControls = useAnimation();
+  const navigate=useNavigate(); 
 
   const [featuresRef, featuresInView] = useInView({ threshold: 0.2 });
   const [statsRef, statsInView] = useInView({ threshold: 0.2 });
@@ -514,68 +515,7 @@ const Welcome = () => {
         </Fade>
       </Grid>
 
-      {/* <Grid item xs={12} md={5}>
-        <Zoom in={loaded} timeout={1000}>
-          <Box
-            sx={{
-              position: "relative",
-              height: { xs: "300px", md: "400px" },
-              width: "100%",
-              borderRadius: "24px",
-              overflow: "hidden",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-              transform: "perspective(1000px) rotateY(-5deg)",
-              transition: "all 0.5s ease",
-              "&:hover": {
-                transform: "perspective(1000px) rotateY(0deg)",
-              },
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)",
-                zIndex: 1,
-              },
-            }}
-          >
-            <Box
-              component="img"
-              src='/pic/hands.jpg'
-              alt="Luxury Home Interior"
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transition: "transform 0.5s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            />
-
-            <Box
-              sx={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                p: 3,
-                zIndex: 2,
-              }}
-            >
-              <Typography variant="h6" fontWeight="bold" sx={{ color: "#ffffff" }}>
-                Exclusive Properties
-              </Typography>
-              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
-                Discover our handpicked selection of premium properties
-              </Typography>
-            </Box>
-          </Box>
-        </Zoom>
-      </Grid> */}
+     
     </Grid>
 
     <Box
@@ -693,7 +633,7 @@ const Welcome = () => {
               </Typography>
             </Box>
 
-            <Button
+            <Button onClick={()=>navigate("/about")}
               variant="outlined"
               color="primary"
               sx={{
@@ -880,25 +820,21 @@ const Welcome = () => {
           title: "Apartments",
           icon: <ApartmentIcon />,
           image: "images/kitchen.jpg",
-          count: 1245
         },
         {
           title: "Houses",
           icon: <HouseIcon />,
           image: "images/house.jpg",
-          count: 873
         },
         {
           title: "Villas",
           icon: <VillaIcon />,
           image: "images/villa2.jpg",
-          count: 342
         },
         {
           title: "Commercial",
           icon: <BusinessIcon />,
           image: "images/office.jpg",
-          count: 568
         }
       ].map((item, index) => (
         <Grid item xs={12} sm={6} md={3} key={index}>
@@ -929,7 +865,6 @@ const Welcome = () => {
                     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  {item.count} listings
                 </Box>
               </Box>
               <CardContent sx={{ textAlign: "center" }}>
@@ -970,7 +905,6 @@ const Welcome = () => {
                   }}
                   endIcon={<ArrowForwardIcon />}
                 >
-                  Browse {item.title}
                 </Button>
               </CardContent>
             </PropertyTypeCard>
