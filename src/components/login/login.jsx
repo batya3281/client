@@ -78,6 +78,24 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import { motion } from "framer-motion";
 import "./login.css";
+//////////
+// Add this import at the top with other imports
+
+import { 
+  Dialog, 
+  DialogActions, 
+  DialogContent, 
+  DialogContentText, 
+  DialogTitle,
+ 
+  Collapse,
+ 
+} from "@mui/material";
+import EmailIcon from '@mui/icons-material/Email';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import SendIcon from '@mui/icons-material/Send';
+
+/////////
 
 // Styled components with animations
 const LoginPaper = styled(Paper)(({ theme }) => ({
@@ -163,23 +181,23 @@ const AnimatedTextField = styled(TextField)(({ theme }) => ({
       color: "#212121", // צבע אייקונים שחור
     },
   },
-    // הוסף סגנונות לשגיאות
-    "& .MuiFormHelperText-root": {
-      marginLeft: 0,
-      transition: "all 0.3s ease",
+  // הוסף סגנונות לשגיאות
+  "& .MuiFormHelperText-root": {
+    marginLeft: 0,
+    transition: "all 0.3s ease",
+  },
+  "& .MuiFormHelperText-root.Mui-error": {
+    color: "#e53935",
+    fontWeight: 500,
+    fontSize: "0.75rem",
+  },
+  "& .MuiOutlinedInput-root.Mui-error": {
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#e53935",
+      borderWidth: "2px",
     },
-    "& .MuiFormHelperText-root.Mui-error": {
-      color: "#e53935",
-      fontWeight: 500,
-      fontSize: "0.75rem",
-    },
-    "& .MuiOutlinedInput-root.Mui-error": {
-      "& .MuiOutlinedInput-notchedOutline": {
-        borderColor: "#e53935",
-        borderWidth: "2px",
-      },
-    },
-  
+  },
+
   marginBottom: "20px",
 }));
 
@@ -257,6 +275,9 @@ const BackgroundAnimation = styled(Box)(({ theme }) => ({
   },
 }));
 
+
+
+
 export const Login = () => {
   const [details, setDetails] = useState({ name: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
@@ -274,6 +295,62 @@ export const Login = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+
+
+  /////////
+
+
+  // Inside the Login component, add these new state variables
+  const [forgotPasswordOpen, setForgotPasswordOpen] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetStatus, setResetStatus] = useState({ message: "", type: "" });
+
+  // Add these functions to handle the forgot password flow
+  const handleForgotPasswordClick = () => {
+    setForgotPasswordOpen(true);
+  };
+
+  const handleForgotPasswordClose = () => {
+    setForgotPasswordOpen(false);
+    setResetEmail("");
+    setResetStatus({ message: "", type: "" });
+  };
+
+  const handleResetPassword = async () => {
+    // Validate email
+    if (!resetEmail || !/\S+@\S+\.\S+/.test(resetEmail)) {
+      setResetStatus({
+        message: "Please enter a valid email address",
+        type: "error"
+      });
+      return;
+    }
+
+    try {
+      // Here you would typically call your API to handle password reset
+      // For example:
+      // await dispatch(resetPasswordThunk(resetEmail));
+
+      // For now, we'll simulate a successful response
+      setTimeout(() => {
+        setResetStatus({
+          message: "Password reset instructions sent to your email",
+          type: "success"
+        });
+
+        // Close dialog after 3 seconds on success
+        setTimeout(() => {
+          handleForgotPasswordClose();
+        }, 3000);
+      }, 1500);
+    } catch (error) {
+      setResetStatus({
+        message: "Failed to send reset instructions. Please try again.",
+        type: "error"
+      });
+    }
+  };
+  /////
   // Animation sequence
   useEffect(() => {
     const timer1 = setTimeout(() => setLogoVisible(true), 300);
@@ -592,11 +669,38 @@ export const Login = () => {
                     }}
                   >
                     <Typography
+                      //   variant="body2"
+                      //   sx={{
+                      //     position: "relative",
+                      //     color: "#212121",
+                      //     fontWeight: 500,
+                      //     position: "relative",
+                      //     color: "#212121",
+                      //     fontWeight: 500,
+                      //     cursor: "pointer",
+                      //     transition: "all 0.3s ease",
+                      //     "&::after": {
+                      //       content: '""',
+                      //       position: "absolute",
+                      //       width: "0%",
+                      //       height: "2px",
+                      //       bottom: -2,
+                      //       left: 0,
+                      //       backgroundColor: "#e53935",
+                      //       transition: "width 0.3s ease",
+                      //     },
+                      //     "&:hover": {
+                      //       color: "#e53935",
+                      //       "&::after": {
+                      //         width: "100%",
+                      //       },
+                      //     },
+                      //   }}
+                      // >
+                      //   Forgot Password?
                       variant="body2"
+                      onClick={handleForgotPasswordClick}
                       sx={{
-                        position: "relative",
-                        color: "#212121",
-                        fontWeight: 500,
                         position: "relative",
                         color: "#212121",
                         fontWeight: 500,
@@ -656,6 +760,204 @@ export const Login = () => {
                 </Box>
               </Box>
             </Fade>
+{/* Forgot Password Dialog - עיצוב משודרג */}
+<Dialog 
+  open={forgotPasswordOpen} 
+  onClose={handleForgotPasswordClose}
+  TransitionComponent={Fade}
+  TransitionProps={{ timeout: 500 }}
+  PaperProps={{
+    sx: {
+      borderRadius: "16px",
+      boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)",
+      overflow: "hidden",
+      background: "linear-gradient(to bottom, #ffffff, #f9f9f9)",
+      maxWidth: "450px",
+      width: "100%",
+      position: "relative",
+      "&::before": {
+        content: '""',
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: "5px",
+        background: "red",
+      },
+      p: 0,
+    }
+  }}
+>
+  <Box sx={{ position: "relative", overflow: "hidden" }}>
+    {/* רקע דקורטיבי */}
+    <Box
+      sx={{
+        position: "absolute",
+        top: -100,
+        right: -100,
+        width: "200px",
+        height: "200px",
+        borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(229,57,53,0.05) 0%, rgba(229,57,53,0) 70%)",
+        zIndex: 0,
+      }}
+    />
+    <Box
+      sx={{
+        position: "absolute",
+        bottom: -80,
+        left: -80,
+        width: "180px",
+        height: "180px",
+        borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(33,33,33,0.05) 0%, rgba(33,33,33,0) 70%)",
+        zIndex: 0,
+      }}
+    />
+
+    <DialogTitle 
+      sx={{ 
+        fontWeight: 600, 
+        color: "#212121", 
+        pt: 3,
+        pb: 2,
+        px: 3,
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        position: "relative",
+        zIndex: 1,
+      }}
+    >
+      <LockIcon sx={{ color: "#e53935", fontSize: 28 }} />
+      <Typography variant="h5" component="span" sx={{ fontWeight: 600 }}>
+        Reset Password
+      </Typography>
+    </DialogTitle>
+
+    <DialogContent sx={{ px: 3, pt: 1, pb: 2, position: "relative", zIndex: 1 }}>
+      <DialogContentText sx={{ mb: 3, color: "#424242" }}>
+        Enter your email address and we'll send you instructions to reset your password.
+      </DialogContentText>
+      
+      <Grow in={true} timeout={800} style={{ transformOrigin: '0 0 0' }}>
+        <Box>
+          <AnimatedTextField
+            autoFocus
+            margin="dense"
+            id="email"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="outlined"
+            value={resetEmail}
+            onChange={(e) => setResetEmail(e.target.value)}
+            error={resetStatus.type === "error"}
+            helperText={resetStatus.type === "error" ? resetStatus.message : ""}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <motion.div
+                    initial={{ rotate: 0 }}
+                    animate={{ rotate: resetEmail ? [0, -10, 10, -10, 10, 0] : 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                  >
+                    <EmailIcon sx={{ color: resetStatus.type === "error" ? "#e53935" : "#9e9e9e" }} />
+                  </motion.div>
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                backgroundColor: "#ffffff",
+                transition: "all 0.3s ease",
+              }
+            }}
+          />
+        </Box>
+      </Grow>
+      
+      <Collapse in={resetStatus.type === "success"}>
+        <Alert 
+          severity="success" 
+          sx={{ 
+            mt: 2,
+            borderRadius: "8px",
+            animation: "pulse 2s infinite",
+            "@keyframes pulse": {
+              "0%": { boxShadow: "0 0 0 0 rgba(76, 175, 80, 0.4)" },
+              "70%": { boxShadow: "0 0 0 10px rgba(76, 175, 80, 0)" },
+              "100%": { boxShadow: "0 0 0 0 rgba(76, 175, 80, 0)" },
+            }
+          }}
+          icon={<CheckCircleIcon fontSize="inherit" />}
+        >
+          {resetStatus.message}
+        </Alert>
+      </Collapse>
+    </DialogContent>
+
+    <DialogActions sx={{ px: 3, pb: 3, pt: 1, position: "relative", zIndex: 1 }}>
+      <Button 
+        onClick={handleForgotPasswordClose}
+        sx={{ 
+          color: "#212121",
+          fontWeight: 500,
+          "&:hover": { 
+            backgroundColor: "rgba(0,0,0,0.05)",
+            transform: "translateY(-2px)",
+          },
+          transition: "all 0.3s ease",
+        }}
+      >
+        Cancel
+      </Button>
+      <LoginButton
+        onClick={handleResetPassword}
+        variant="contained"
+        disabled={resetStatus.type === "success"}
+        sx={{ 
+          px: 3,
+          py: 1,
+          position: "relative",
+          overflow: "hidden",
+          transition: "all 0.3s ease",
+          backgroundColor: "#212121",
+          color: "#ffffff",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent)",
+            transform: "translateX(-100%)",
+          },
+          "&:hover": {
+            backgroundColor: "#e53935",
+            transform: "translateY(-3px)",
+            boxShadow: "0 6px 20px rgba(229, 57, 53, 0.3)",
+            "&::before": {
+              transform: "translateX(100%)",
+              transition: "all 0.7s ease",
+            },
+          },
+          "&:active": {
+            transform: "translateY(0)",
+          },
+          "&.Mui-disabled": {
+            backgroundColor: "#9e9e9e",
+            color: "#ffffff",
+          }
+        }}
+        endIcon={<SendIcon />}
+      >
+        Send Reset Link
+      </LoginButton>
+    </DialogActions>
+  </Box>
+</Dialog>
 
             {/* Decorative elements */}
             <Box
@@ -709,6 +1011,7 @@ export const Login = () => {
         </Typography>
       </Container>
     </Box>
+    
   );
 };
 
