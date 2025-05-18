@@ -728,9 +728,9 @@ const About = () => {
                 
                 },
                 {
-                  name: 'Malki Borzikowski',
+                  name: 'Malka Borzikowski',
                   title: 'Backend Developer',
-                  description: 'Malki is a talented backend developer, focusing on building robust and scalable server-side applications. He ensures the smooth operation of our platform and is dedicated to writing clean and efficient code.',
+                  description: 'Malka is a talented backend developer, focusing on building robust and scalable server-side applications. He ensures the smooth operation of our platform and is dedicated to writing clean and efficient code.',
               
                 },
               ].map((member, index) => (
